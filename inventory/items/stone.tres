@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://dtomcesqamag6"]
+
+[ext_resource type="Script" path="res://inventory_item.gd" id="1_wvbh4"]
+[ext_resource type="Texture2D" uid="uid://bkwx40ulcg74a" path="res://my_tiles/collectable/rock_collectable.png" id="2_a1o7p"]
+
+[resource]
+script = ExtResource("1_wvbh4")
+name = "stone"
+texture = ExtResource("2_a1o7p")

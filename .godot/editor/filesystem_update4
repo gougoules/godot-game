@@ -1,0 +1,5 @@
+res://map/random_map.tscn
+res://inventory/player_inventory.tres
+res://tileset/tilset2.tres
+res://spritesheet/coal_break.tres
+res://spritesheet/stone_break.tres

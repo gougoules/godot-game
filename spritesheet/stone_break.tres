@@ -1,0 +1,48 @@
+[gd_resource type="SpriteFrames" load_steps=7 format=3 uid="uid://b4lanho576vy7"]
+
+[ext_resource type="Texture2D" uid="uid://d0k8jigfhbgps" path="res://my_tiles/material/rock.png" id="1_miaqq"]
+[ext_resource type="Texture2D" uid="uid://badudeknsyixv" path="res://my_tiles/material/rock_animate2.png" id="2_tvp6v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5k5yy"]
+atlas = ExtResource("2_tvp6v")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ikvji"]
+atlas = ExtResource("2_tvp6v")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_13d4x"]
+atlas = ExtResource("2_tvp6v")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22y7s"]
+atlas = ExtResource("2_tvp6v")
+region = Rect2(192, 0, 64, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_miaqq")
+}],
+"loop": true,
+"name": &"stone",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5k5yy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ikvji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_13d4x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_22y7s")
+}],
+"loop": false,
+"name": &"stone_break",
+"speed": 16.0
+}]

@@ -1,0 +1,109 @@
+[gd_scene load_steps=18 format=3 uid="uid://b86180gilr6s2"]
+
+[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_qbuy5"]
+[ext_resource type="Resource" uid="uid://cu3avqqn24ohg" path="res://inventory/player_inventory.tres" id="2_awlpc"]
+[ext_resource type="Texture2D" uid="uid://bmr5o2ovnwvga" path="res://v1.1 dungeon crawler 16X16 pixel pack/heroes/knight/knight_idle_anim_f0.png" id="2_ciie8"]
+[ext_resource type="Texture2D" uid="uid://dj8mapdnny514" path="res://v1.1 dungeon crawler 16X16 pixel pack/heroes/knight/knight_idle_anim_f1.png" id="3_bc440"]
+[ext_resource type="Texture2D" uid="uid://emhockyn4gx2" path="res://v1.1 dungeon crawler 16X16 pixel pack/heroes/knight/knight_idle_anim_f2.png" id="4_f2tgv"]
+[ext_resource type="Texture2D" uid="uid://ctip8wi8dehsl" path="res://v1.1 dungeon crawler 16X16 pixel pack/heroes/knight/knight_idle_anim_f3.png" id="5_v1bu3"]
+[ext_resource type="Texture2D" uid="uid://cjbh0yron50yc" path="res://v1.1 dungeon crawler 16X16 pixel pack/heroes/knight/knight_idle_anim_f4.png" id="6_m4n0l"]
+[ext_resource type="Texture2D" uid="uid://c5snhqw5drt51" path="res://v1.1 dungeon crawler 16X16 pixel pack/heroes/knight/knight_idle_anim_f5.png" id="7_2orcr"]
+[ext_resource type="Texture2D" uid="uid://c2k0r4rqgxk5r" path="res://v1.1 dungeon crawler 16X16 pixel pack/heroes/knight/knight_run_anim_f0.png" id="8_awilj"]
+[ext_resource type="Texture2D" uid="uid://cxou8jp8f2k7n" path="res://v1.1 dungeon crawler 16X16 pixel pack/heroes/knight/knight_run_anim_f1.png" id="9_o2rto"]
+[ext_resource type="Texture2D" uid="uid://bj3ldv6qsehvw" path="res://v1.1 dungeon crawler 16X16 pixel pack/heroes/knight/knight_run_anim_f2.png" id="10_evcxo"]
+[ext_resource type="Texture2D" uid="uid://cuo72scahqm0n" path="res://v1.1 dungeon crawler 16X16 pixel pack/heroes/knight/knight_run_anim_f3.png" id="11_g6txq"]
+[ext_resource type="Texture2D" uid="uid://cklxvd0n43wus" path="res://v1.1 dungeon crawler 16X16 pixel pack/heroes/knight/knight_run_anim_f4.png" id="12_bpug0"]
+[ext_resource type="Texture2D" uid="uid://cfqny8jiitqte" path="res://v1.1 dungeon crawler 16X16 pixel pack/heroes/knight/knight_run_anim_f5.png" id="13_17rga"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vhk1w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ciie8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_bc440")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_f2tgv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_v1bu3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_m4n0l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_2orcr")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_awilj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_o2rto")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_evcxo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_g6txq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_bpug0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_17rga")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_us3n1"]
+size = Vector2(10, 7)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2cv3l"]
+radius = 50.0
+
+[node name="player" type="CharacterBody2D"]
+collision_mask = 31
+safe_margin = 1.0
+script = ExtResource("1_qbuy5")
+inv = ExtResource("2_awlpc")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_vhk1w")
+animation = &"walk"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(4, 4)
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3.5)
+scale = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_us3n1")
+
+[node name="interaction_area" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 16
+
+[node name="collison_shape" type="CollisionShape2D" parent="interaction_area"]
+shape = SubResource("CircleShape2D_2cv3l")
+
+[node name="RayCast2D" type="RayCast2D" parent="interaction_area"]
+collision_mask = 16
+collide_with_areas = true
+
+[connection signal="body_entered" from="interaction_area" to="." method="_on_interaction_area_body_entered"]
+[connection signal="body_exited" from="interaction_area" to="." method="_on_interaction_area_body_exited"]
+[connection signal="input_event" from="interaction_area" to="." method="_on_interaction_area_input_event"]

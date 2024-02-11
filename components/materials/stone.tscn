@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bb6lj8nnxbfmm"]
+
+[ext_resource type="Script" path="res://scripts/components/stone.gd" id="1_u4myu"]
+[ext_resource type="SpriteFrames" uid="uid://b4lanho576vy7" path="res://spritesheet/stone_break.tres" id="2_a3482"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3vi6b"]
+size = Vector2(40, 43)
+
+[node name="stone" type="Node2D"]
+script = ExtResource("1_u4myu")
+life = 3
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = ExtResource("2_a3482")
+animation = &"stone_break"
+
+[node name="collision" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 32
+input_pickable = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collision"]
+position = Vector2(0, -6.5)
+shape = SubResource("RectangleShape2D_3vi6b")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(0, 25)

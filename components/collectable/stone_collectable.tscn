@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://cyr6ygl2gxd1r"]
+
+[ext_resource type="Script" path="res://scripts/collectable/collectable.gd" id="1_ok6hj"]
+[ext_resource type="Texture2D" uid="uid://bkwx40ulcg74a" path="res://my_tiles/collectable/rock_collectable.png" id="1_v4b47"]
+[ext_resource type="Resource" uid="uid://dtomcesqamag6" path="res://inventory/items/stone.tres" id="2_x2s4y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_luiwk"]
+radius = 24.0
+
+[node name="stone_collectable" type="Node2D"]
+script = ExtResource("1_ok6hj")
+item = ExtResource("2_x2s4y")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_v4b47")
+
+[node name="collectable_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collectable_area"]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_luiwk")
+
+[connection signal="body_entered" from="collectable_area" to="." method="_on_collectable_area_body_entered"]

@@ -1,0 +1,89 @@
+[gd_resource type="SpriteFrames" load_steps=13 format=3 uid="uid://c03kk2my37j03"]
+
+[ext_resource type="Texture2D" uid="uid://cvtemdkda42tn" path="res://my_tiles/material/coal.png" id="1_asg47"]
+[ext_resource type="Texture2D" uid="uid://tmrh2p6yr64x" path="res://my_tiles/material/coal_animate.png" id="2_2akjb"]
+[ext_resource type="Texture2D" uid="uid://b5wyd2w2evhse" path="res://my_tiles/material/rock_animate.png" id="3_bkfx8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8rtl"]
+atlas = ExtResource("2_2akjb")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x4hxr"]
+atlas = ExtResource("2_2akjb")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_80ev2"]
+atlas = ExtResource("2_2akjb")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydnyh"]
+atlas = ExtResource("2_2akjb")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkbsf"]
+atlas = ExtResource("3_bkfx8")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fn25l"]
+atlas = ExtResource("3_bkfx8")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4wf64"]
+atlas = ExtResource("3_bkfx8")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6wpy"]
+atlas = ExtResource("3_bkfx8")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_adh8p"]
+atlas = ExtResource("3_bkfx8")
+region = Rect2(64, 0, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_asg47")
+}],
+"loop": true,
+"name": &"coal",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8rtl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x4hxr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_80ev2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ydnyh")
+}],
+"loop": false,
+"name": &"coal_break",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkbsf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fn25l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4wf64")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6wpy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_adh8p")
+}],
+"loop": false,
+"name": &"new_animation",
+"speed": 5.0
+}]

@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://cptgc8d5y7ntd"]
+
+[ext_resource type="Script" path="res://scripts/collectable/collectable.gd" id="1_k7rbe"]
+[ext_resource type="Texture2D" uid="uid://mfcq2djtws7o" path="res://my_tiles/collectable/coal_item.png" id="1_wbtp3"]
+[ext_resource type="Resource" uid="uid://b58ju8ro5m0e7" path="res://inventory/items/coal.tres" id="2_2pyvw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kt6jy"]
+radius = 24.0
+
+[node name="coal_collectable" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_k7rbe")
+item = ExtResource("2_2pyvw")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("1_wbtp3")
+
+[node name="collectable_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collectable_area"]
+shape = SubResource("CircleShape2D_kt6jy")
+
+[connection signal="body_entered" from="collectable_area" to="." method="_on_collectable_area_body_entered"]

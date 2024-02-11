@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkx7pgf1cqq2g"]
+
+[ext_resource type="Script" path="res://inventory/inv_ui_slot.gd" id="1_abv2y"]
+[ext_resource type="Texture2D" uid="uid://boqky7xgqj73m" path="res://my_tiles/inventory/inv_slot.png" id="1_afno5"]
+[ext_resource type="FontFile" uid="uid://dfiwq2sftjuf7" path="res://fonts/DungeonFont.ttf" id="3_41sfs"]
+
+[node name="inv_ui_slot" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(64, 64)
+offset_right = 16.0
+offset_bottom = 16.0
+script = ExtResource("1_abv2y")
+
+[node name="frame" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_afno5")
+centered = false
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="item_display" type="Sprite2D" parent="CenterContainer/Panel"]
+scale = Vector2(0.75, 0.75)
+
+[node name="Label" type="Label" parent="CenterContainer/Panel"]
+texture_filter = 1
+custom_minimum_size = Vector2(40, 17)
+layout_direction = 3
+layout_mode = 0
+offset_left = -20.0
+offset_top = 7.0
+offset_right = 20.0
+offset_bottom = 24.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_41sfs")
+text = "20"
